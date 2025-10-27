@@ -4,77 +4,74 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.util.Date;
 
 import javax.xml.crypto.Data;
 
 @Entity
 public class Cliente {
+    private String nombres;
+    private String primerApellido;
+    private String segundoApellido;
+    private String direccion;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String nombre;
-    private String p_apellido;
-    private String s_apellido;
-    private String direccion;
     private String curp;
-    private String fecha_nacimiento;
+
+    @Temporal(TemporalType.DATE)
+    private Date fechaNacimiento;
+
+    //Sirve para representar el uno a muchos de cliente y polizas, se denota quien es el dueño de la relacion con mappedBy
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Poliza> polizas;
 
     // constructor vacio
     public Cliente() {
     }
 
     // constructor con parametros
-    public Cliente(Long id, String nombre, String p_apellido, String s_apellido, String direccon, String curp, String fecha_nacimiento) {
-        this.id = id;
-        this.nombre = nombre;
-        this.p_apellido = p_apellido;
-        this.s_apellido = s_apellido;
-        this.direccion = direccon;
+    public Cliente(String nombres, String primerApellido, String segundoApellido, String direccion, String curp, Date fechaNacimiento) {
+        this.nombres = nombres;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
+        this.direccion = direccion;
         this.curp = curp;
-        this.fecha_nacimiento = fecha_nacimiento;
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     // getters y setters
-    public Long getId() {
-        return id;
+
+
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getPrimerApellido() {
+        return primerApellido;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setPrimerApellido(String primerApellido) {
+        this.primerApellido = primerApellido;
     }
 
-    public String getP_apellido() {
-        return p_apellido;
+    public String getSegundoApellido() {
+        return segundoApellido;
     }
 
-    public void setP_apellido(String p_apellido) {
-        this.p_apellido = p_apellido;
+    public void setSegundoApellido(String segundoApellido) {
+        this.segundoApellido = segundoApellido;
     }
 
-    public String getS_apellido() {
-        return s_apellido;
-    }
-
-    public void setS_apellido(String s_apellido) {
-        this.s_apellido = s_apellido;
-    }
-
-    public String getDereccion() {
+    public String getDireccion() {
         return direccion;
     }
 
-    public void setDereccion(String dereccion) {
-        this.direccion = dereccion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getCurp() {
@@ -85,24 +82,23 @@ public class Cliente {
         this.curp = curp;
     }
 
-    public String getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFecha_nacimiento(String fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     @Override
     public String toString() {
         return "Cliente{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellido_p='" + p_apellido + '\''+
-                ", apellido_m='" + s_apellido + '\''+
+                "nombres='" + nombres + '\'' +
+                ", primerApellido='" + primerApellido + '\'' +
+                ", segundoApellido='" + segundoApellido + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", curp='" + curp + '\'' +
-                " fecha_nacimiento='" + fecha_nacimiento + '\''+
+                ", fechaNacimiento=" + fechaNacimiento +
                 '}';
     }
 }

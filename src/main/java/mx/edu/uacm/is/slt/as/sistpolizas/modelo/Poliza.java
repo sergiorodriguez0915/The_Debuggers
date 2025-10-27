@@ -9,38 +9,41 @@ import jakarta.persistence.Id;
 public class Poliza {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    private UUID clave;
 
-    private String tipo;
+    private Integer tipo;
     private String descripcion;
     private double monto;
-    private String cliente_asegurado;
 
+    //Muchas polizas pueden pertenecer a un solo cliente y se crea la columna de llave foránea en la tabla poliza
+    @ManyToOne
+    @JoinColumn(name = "curp_cliente", referencedColumnName = "curp")
+    private Cliente cliente;
 
     public Poliza() {}
 
-    public Poliza(Long id, String tipo, String descripcion, double monto, String cliente_asegurado) {
-        this.id = id;
+    public Poliza(UUID clave, Integer tipo, String descripcion, double monto) {
+        this.clave = clave;
         this.tipo = tipo;
         this.descripcion = descripcion;
         this.monto = monto;
-        this.cliente_asegurado = cliente_asegurado;
+
     }
 
-    public Long getId() {
-        return id;
+    public UUID getClave() {
+        return clave;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setClave(UUID clave) {
+        this.clave = clave;
     }
 
-    public String getTipo() {
+    public Integer getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(Integer tipo) {
         this.tipo = tipo;
     }
 
@@ -60,22 +63,18 @@ public class Poliza {
         this.monto = monto;
     }
 
-    public String getCliente_asegurado() {
-        return cliente_asegurado;
-    }
+    public Cliente getCliente() {return cliente;}
 
-    public void setCliente_asegurado(String cliente_asegurado) {
-        this.cliente_asegurado = cliente_asegurado;
-    }
+    public void setCliente(Cliente cliente) {this.cliente = cliente;}
 
     @Override
     public String toString() {
         return "Poliza{" +
-                "id=" + id +
+                "clave=" + clave +
                 ", tipo='" + tipo + '\'' +
                 ", descripcion='" + descripcion + '\''+
-                ", monto='" + monto + '\''+
-                ", cliente_asegurado='" + cliente_asegurado + '\''+
+                ", monto='" + monto +
+                ", cliente=" + (cliente != null ? cliente.getCurp() : "null") +
                 '}';
     }
 }

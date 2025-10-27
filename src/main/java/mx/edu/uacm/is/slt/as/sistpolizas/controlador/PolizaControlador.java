@@ -1,7 +1,9 @@
 package mx.edu.uacm.is.slt.as.sistpolizas.controlador;
 
 import mx.edu.uacm.is.slt.as.sistpolizas.modelo.Poliza;
+import mx.edu.uacm.is.slt.as.sistpolizas.modelo.Cliente;
 import mx.edu.uacm.is.slt.as.sistpolizas.servicio.PolizaServicio;
+import mx.edu.uacm.is.slt.as.sistpolizas.servicio.ClienteServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +16,14 @@ import java.util.UUID;
 public class PolizaControlador {
     @Autowired
     private PolizaServicio polizaServicio;
+    @Autowired
+    private ClienteServicio clienteServicio;
 
     @PutMapping("/{clave}/{tipo}/{monto}/{descripcion}/{curp_cliente}")
     public ResponseEntity<String> actualizarPoliza(
             @PathVariable UUID clave,
             @PathVariable Integer tipo,
-            @PathVariable float monto,
+            @PathVariable double monto,
             @PathVariable String descripcion,
             @PathVariable String curpCliente)
     {
@@ -38,7 +42,13 @@ public class PolizaControlador {
         poliza.setTipo(tipo);
         poliza.setMonto(monto);
         poliza.setDescripcion(descripcion);
-        poliza.setCurpCliente(curpCliente);
+
+
+        Cliente cliente = clienteServicio.buscarCliente(curpCliente);
+        if (cliente == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cliente no encontrado con CURP proporcionado");
+        }
+        poliza.setCliente(cliente);
 
         //El nombre del servicio debera ser actualizarPoliza
         polizaServicio.actualizarPoliza(poliza);
