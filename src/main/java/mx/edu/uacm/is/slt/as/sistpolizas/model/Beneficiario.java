@@ -1,5 +1,5 @@
 package mx.edu.uacm.is.slt.as.sistpolizas.model;
-
+//comentario de Rous
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
