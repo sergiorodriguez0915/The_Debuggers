@@ -1,40 +1,30 @@
 package mx.edu.uacm.is.slt.as.sistpolizas.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Poliza {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String tipo;
+    private String tipo;  //todo es el identificador
     private String descripcion;
     private double monto;
     private String cliente_asegurado;
 
 
-    public Poliza() {}
+    public Poliza() {
+    }
 
-    public Poliza(Long id, String tipo, String descripcion, double monto, String cliente_asegurado) {
-        this.id = id;
+    public Poliza(String tipo, String descripcion, double monto, String cliente_asegurado) {
+
         this.tipo = tipo;
         this.descripcion = descripcion;
         this.monto = monto;
         this.cliente_asegurado = cliente_asegurado;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTipo() {
         return tipo;
@@ -69,13 +59,24 @@ public class Poliza {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (super.equals(o)) {
+            return true;
+        } else if (o instanceof Poliza) {
+            Poliza otraPoliza = (Poliza) o;
+            return Objects.equals(tipo, otraPoliza.tipo);
+        } else {
+            return false;
+        } // comprueba equivalencia
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(tipo);
+    }
+
+    @Override
     public String toString() {
-        return "Poliza{" +
-                "id=" + id +
-                ", tipo='" + tipo + '\'' +
-                ", descripcion='" + descripcion + '\''+
-                ", monto='" + monto + '\''+
-                ", cliente_asegurado='" + cliente_asegurado + '\''+
-                '}';
+        return String.format("Poliza(%s, %s, %.2f, %s)", tipo, descripcion, monto, cliente_asegurado);
     }
 }
