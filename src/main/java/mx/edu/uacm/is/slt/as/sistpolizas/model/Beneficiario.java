@@ -1,28 +1,27 @@
 package mx.edu.uacm.is.slt.as.sistpolizas.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.util.Date;
+import java.util.Objects;
 
 @Entity
 public class Beneficiario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String nombre;
     private String p_apellido;
     private String s_apellido;
-    private String fecha_nacimiento;
+    private Date fecha_nacimiento;
     private String poliza_beneficiario;
     private double porcentaje;
 
-    public Beneficiario() {}
+    // Constructor vacío
+    public Beneficiario() {
+    }
 
-    public Beneficiario(Long id, String nombre, String p_apellido, String s_apellido, String fecha_nacimiento, String poliza_beneficiario, double porcentaje) {
-        this.id = id;
+    // Constructor con parámetros
+    public Beneficiario(String nombre, String p_apellido, String s_apellido, Date fecha_nacimiento, String poliza_beneficiario, double porcentaje) {
         this.nombre = nombre;
         this.p_apellido = p_apellido;
         this.s_apellido = s_apellido;
@@ -32,15 +31,6 @@ public class Beneficiario {
     }
 
     // Getters y Setters
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -65,11 +55,11 @@ public class Beneficiario {
         this.s_apellido = s_apellido;
     }
 
-    public String getFecha_nacimiento() {
+    public Date getFecha_nacimiento() {
         return fecha_nacimiento;
     }
 
-    public void setFecha_nacimiento(String fecha_nacimiento) {
+    public void setFecha_nacimiento(Date fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
@@ -90,16 +80,25 @@ public class Beneficiario {
     }
 
     @Override
-    public String toString() {
-        return "Beneficiario{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellido_p='" + p_apellido + '\''+
-                ", apellido_m='" + s_apellido + '\''+
-                ", fecha_nacimiento='" + fecha_nacimiento + '\'' +
-                ", poliza_beneficiario='" + poliza_beneficiario + '\'' +
-                ", porcentaje='" + porcentaje + '\''+
-                '}';
+    public boolean equals(Object o) {
+        if (super.equals(o)) {
+            return true;
+        } else if (o instanceof Beneficiario) {
+            Beneficiario otroBeneficiario = (Beneficiario) o;
+            return Objects.equals(nombre, otroBeneficiario.nombre);
+        } else {
+            return false;
+        } // comprueba equivalencia
     }
-}
 
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(nombre);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Beneficiario: (%s, %s, %s, %s, %s, %s)", nombre,p_apellido,s_apellido,fecha_nacimiento,poliza_beneficiario,porcentaje);
+    }
+
+}
