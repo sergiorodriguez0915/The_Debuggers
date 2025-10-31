@@ -1,7 +1,22 @@
 package mx.edu.uacm.is.slt.as.sistpolizas.controller;
 
+import mx.edu.uacm.is.slt.as.sistpolizas.model.Cliente;
+import mx.edu.uacm.is.slt.as.sistpolizas.repository.ClienteRepository;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 @RestController
 public class ClienteController {
+    @GetMapping("/cliente/{curp}")
+    public ResponseEntity<Cliente> getCliente(@PathVariable String curp){
+        //Cliente cliente = ClienteRepository.findByCurp(curp);
+        Cliente cliente = new Cliente();
+        return ResponseEntity.ok(cliente);
+    }
+
     @PutMapping(value={"/cliente/{curp}/{direccion}/{fecha_nacimiento}/{nombre}/{p_apellido}/{s_Apellido}",
             "{curp}/{direccion}/{fecha_nacimiento}/{nombre}/{p_apellido}"})
     public ResponseEntity<String> actualizarCliente(
@@ -33,9 +48,9 @@ public class ClienteController {
         Cliente cliente = clienteRepository.findByCurp(curp);
 
         cliente.setDireccion(direccion);
-        cliente.setFechaNacimiento(fechaNacimiento);
-        cliente.setNombres(nombres);
-        cliente.setPrimerApellido(primerApellido);
+        cliente.setFecha_nacimiento(fechaNacimiento);
+        cliente.setNombre(nombres);
+        cliente.setP_apellido(primerApellido);
 
         clienteServicio.actualizarCliente(cliente);
 
