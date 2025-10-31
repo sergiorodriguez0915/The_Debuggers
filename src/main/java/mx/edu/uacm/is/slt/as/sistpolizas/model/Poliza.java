@@ -1,39 +1,38 @@
 package mx.edu.uacm.is.slt.as.sistpolizas.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 public class Poliza {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private UUID   polizaid; //todo es el identificador
     private String tipo;
     private String descripcion;
     private double monto;
     private String cliente_asegurado;
 
 
-    public Poliza() {}
+    public Poliza() {
+    }
 
-    public Poliza(Long id, String tipo, String descripcion, double monto, String cliente_asegurado) {
-        this.id = id;
+    public Poliza(UUID polizaid, String tipo, String descripcion, double monto, String cliente_asegurado) {
+        this.polizaid = polizaid;
         this.tipo = tipo;
         this.descripcion = descripcion;
         this.monto = monto;
         this.cliente_asegurado = cliente_asegurado;
     }
 
-    public Long getId() {
-        return id;
+    public UUID getPolizaid() {
+        return polizaid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPolizaid(UUID polizaid) {
+        this.polizaid = polizaid;
     }
 
     public String getTipo() {
@@ -69,13 +68,24 @@ public class Poliza {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (super.equals(o)) {
+            return true;
+        } else if (o instanceof Poliza) {
+            Poliza otraPoliza = (Poliza) o;
+            return Objects.equals(polizaid, otraPoliza.polizaid);
+        } else {
+            return false;
+        } // comprueba equivalencia
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(polizaid);
+    }
+
+    @Override
     public String toString() {
-        return "Poliza{" +
-                "id=" + id +
-                ", tipo='" + tipo + '\'' +
-                ", descripcion='" + descripcion + '\''+
-                ", monto='" + monto + '\''+
-                ", cliente_asegurado='" + cliente_asegurado + '\''+
-                '}';
+        return String.format("Poliza(%s, %s, %s, %.2f, %s)", polizaid, tipo, descripcion, monto, cliente_asegurado);
     }
 }

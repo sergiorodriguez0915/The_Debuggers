@@ -1,25 +1,28 @@
 package mx.edu.uacm.is.slt.as.sistpolizas.model;
-//comentario de Rous
+
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.util.Date;
+import java.util.Objects;
 
 @Entity
 public class Beneficiario {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String nombre;
+    @EmbeddedId
+    /*private String nombre;
     private String p_apellido;
     private String s_apellido;
-    private String fecha_nacimiento;
+    private Date fecha_nacimiento;
+    */
     private String poliza_beneficiario;
     private double porcentaje;
 
-    public Beneficiario() {}
+    // Constructor vacío
+    public Beneficiario() {
+    }
+
+    // Constructor con parámetros
 
     public Beneficiario(Long id, String nombre, String p_apellido, String s_apellido, String fecha_nacimiento, String poliza_beneficiario, double porcentaje) {
         this.id = id;
