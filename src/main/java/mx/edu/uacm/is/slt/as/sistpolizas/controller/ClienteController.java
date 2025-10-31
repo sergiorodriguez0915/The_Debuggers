@@ -3,22 +3,38 @@ package mx.edu.uacm.is.slt.as.sistpolizas.controller;
 import mx.edu.uacm.is.slt.as.sistpolizas.model.Cliente;
 import mx.edu.uacm.is.slt.as.sistpolizas.repository.ClienteRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ClienteController {
+
+    //Servicio REST GET
     @GetMapping("/cliente/{curp}")
     public ResponseEntity<Cliente> getCliente(@PathVariable String curp){
         //Cliente cliente = ClienteRepository.findByCurp(curp);
+        //Aqui va la implementacion
         Cliente cliente = new Cliente();
         return ResponseEntity.ok(cliente);
     }
 
+    //Servicio REST  POST
+    @PostMapping(value = {"/cliente/{curp}/{direccion}/{fecha_nacimiento}/{nombre}/{p_apellido}/{s_apellido}",
+                          "/cliente/{curp}/{direccion}/{fecha_nacimiento}/{nombre}/{p_apellido}"})
+    public ResponseEntity<Cliente> createCliente(
+            @PathVariable String curp,
+            @PathVariable String direccion,
+            @PathVariable String fechaNacimiento,
+            @PathVariable String nombres,
+            @PathVariable String primerApellido,
+            @PathVariable (required = false)String segundoApellido) {
+        //Aquí va la implementación
+        Cliente cliente = new Cliente();
+        return ResponseEntity.ok(cliente);
+    }
+
+    //Servicio REST PUT
     @PutMapping(value={"/cliente/{curp}/{direccion}/{fecha_nacimiento}/{nombre}/{p_apellido}/{s_Apellido}",
-            "{curp}/{direccion}/{fecha_nacimiento}/{nombre}/{p_apellido}"})
+                       "{curp}/{direccion}/{fecha_nacimiento}/{nombre}/{p_apellido}"})
     public ResponseEntity<String> actualizarCliente(
             @PathVariable String curp,
             @PathVariable String direccion,
@@ -53,7 +69,6 @@ public class ClienteController {
         cliente.setP_apellido(primerApellido);
 
         clienteServicio.actualizarCliente(cliente);
-
         */
         return ResponseEntity.ok("Cliente actualizado");
         //log.info("Cliente actualizado");
