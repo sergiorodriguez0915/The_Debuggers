@@ -1,20 +1,21 @@
 package mx.edu.uacm.is.slt.as.sistpolizas.controller;
 
+import mx.edu.uacm.is.slt.as.sistpolizas.repository.ClienteRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ClienteController {
 
-    /*
+/*
     //Repositorios
     private final ClienteRepository clienteRepository;
 
     public ClienteController(ClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
     }
-    */
 
+*/
     //Servicio REST GET
     @GetMapping("/cliente/{curp}")
     public ResponseEntity<String> getCliente(@PathVariable String curp){
