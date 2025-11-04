@@ -1,6 +1,3 @@
-//Esta interfaz es responsable de la persistencia de la entidad Cliente,
-// cuya clave primaria es de tipo String (el CURP).
-
 package mx.edu.uacm.is.slt.as.sistpolizas.repository; // PACKAGE FINAL CORRECTO
 
 import mx.edu.uacm.is.slt.as.sistpolizas.model.Cliente; // Importación correcta

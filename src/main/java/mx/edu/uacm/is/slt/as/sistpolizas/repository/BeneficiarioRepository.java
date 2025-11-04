@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //Esta interfaz gestiona la entidad Beneficiario y su clave primaria es la clase compuesta IdBeneficiarioPoliza (que definiste como @Embeddable).
 package mx.edu.uacm.is.slt.as.sistpolizas.repository; // ¡PACKAGE FINAL CORRECTO!
 
@@ -20,3 +21,9 @@ public interface BeneficiarioRepository extends JpaRepository<Beneficiario, IdBe
 
     Optional<Beneficiario> findByIdFecha_nacimiento(Date fechaNacimiento);
 }
+=======
+package mx.edu.uacm.is.slt.as.sistpolizas.repository;
+
+public class BeneficiarioRepository {
+}
+>>>>>>> developer
