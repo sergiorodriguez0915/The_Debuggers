@@ -10,17 +10,17 @@ public class ClienteController {
 
     //Servicio REST GET
     @GetMapping("/cliente/{curp}")
-    public ResponseEntity<Cliente> getCliente(@PathVariable String curp){
+    public ResponseEntity<String> getCliente(@PathVariable String curp){
         //Cliente cliente = ClienteRepository.findByCurp(curp);
         //Aqui va la implementacion
-        Cliente cliente = new Cliente();
-        return ResponseEntity.ok(cliente);
+        //Cliente cliente = new Cliente();
+        return ResponseEntity.ok("Cliente devuelto");
     }
 
     //Servicio REST  POST
     @PostMapping(value = {"/cliente/{curp}/{direccion}/{fecha_nacimiento}/{nombre}/{p_apellido}/{s_apellido}",
                           "/cliente/{curp}/{direccion}/{fecha_nacimiento}/{nombre}/{p_apellido}"})
-    public ResponseEntity<Cliente> createCliente(
+    public ResponseEntity<String> createCliente(
             @PathVariable String curp,
             @PathVariable String direccion,
             @PathVariable String fechaNacimiento,
@@ -28,8 +28,8 @@ public class ClienteController {
             @PathVariable String primerApellido,
             @PathVariable (required = false)String segundoApellido) {
         //Aquí va la implementación
-        Cliente cliente = new Cliente();
-        return ResponseEntity.ok(cliente);
+        //Cliente cliente = new Cliente();
+        return ResponseEntity.ok("Cliente registrado");
     }
 
     //Servicio REST PUT
@@ -42,6 +42,8 @@ public class ClienteController {
             @PathVariable String nombres,
             @PathVariable String primerApellido,
             @PathVariable (required = false)String segundoApellido) {
+        //Mensaje de cliente actualizado
+        return ResponseEntity.ok("Cliente actualizado");
         /*Posibles validaciones
         if (cliente == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado");
@@ -70,8 +72,7 @@ public class ClienteController {
 
         clienteServicio.actualizarCliente(cliente);
         */
-        return ResponseEntity.ok("Cliente actualizado");
+
         //log.info("Cliente actualizado");
     }
-
 }
