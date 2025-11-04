@@ -88,4 +88,6 @@ public class Poliza {
     public String toString() {
         return String.format("Poliza(%s, %s, %s, %.2f, %s)", polizaid, tipo, descripcion, monto, cliente_asegurado);
     }
+
+
 }
