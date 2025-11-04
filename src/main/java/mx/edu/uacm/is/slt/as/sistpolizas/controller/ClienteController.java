@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ClienteController {
 
+    //Repositorios
+
     //Servicio REST GET
     @GetMapping("/cliente/{curp}")
     public ResponseEntity<String> getCliente(@PathVariable String curp){
@@ -23,10 +25,10 @@ public class ClienteController {
     public ResponseEntity<String> createCliente(
             @PathVariable String curp,
             @PathVariable String direccion,
-            @PathVariable String fechaNacimiento,
-            @PathVariable String nombres,
-            @PathVariable String primerApellido,
-            @PathVariable (required = false)String segundoApellido) {
+            @PathVariable String fecha_nacimiento,
+            @PathVariable String nombre,
+            @PathVariable String p_apellido,
+            @PathVariable (required = false)String s_apellido) {
         //Aquí va la implementación
         //Cliente cliente = new Cliente();
         return ResponseEntity.ok("Cliente registrado");
@@ -38,10 +40,10 @@ public class ClienteController {
     public ResponseEntity<String> updateCliente(
             @PathVariable String curp,
             @PathVariable String direccion,
-            @PathVariable String fechaNacimiento,
-            @PathVariable String nombres,
-            @PathVariable String primerApellido,
-            @PathVariable (required = false)String segundoApellido) {
+            @PathVariable String fecha_nacimiento,
+            @PathVariable String nombre,
+            @PathVariable String p_apellido,
+            @PathVariable (required = false)String s_apellido) {
         //Mensaje de cliente actualizado
         return ResponseEntity.ok("Cliente actualizado");
         /*Posibles validaciones
