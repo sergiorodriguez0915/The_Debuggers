@@ -13,7 +13,7 @@ public class IdBeneficiarioPoliza implements Serializable {
     private String p_apellido;
     private String s_apellido;
     private Date fecha_nacimiento;
-    private UUID idpoliza;
+    private UUID clave_poliza;
 
     private static final long serialVersionid = 52711849321L;
 
@@ -26,7 +26,7 @@ public class IdBeneficiarioPoliza implements Serializable {
         this.p_apellido = p_apellido;
         this.s_apellido = s_apellido;
         this.fecha_nacimiento = fecha_nacimiento;
-        this.idpoliza = idpoliza;
+        this.clave_poliza = idpoliza;
     }
 
     public String getNombre() {
@@ -61,12 +61,12 @@ public class IdBeneficiarioPoliza implements Serializable {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public UUID getIdpoliza() {
-        return idpoliza;
+    public UUID getClave_poliza() {
+        return clave_poliza;
     }
 
-    public void setIdpoliza(UUID idpoliza) {
-        this.idpoliza = idpoliza;
+    public void setClave_poliza(UUID idpoliza) {
+        this.clave_poliza = idpoliza;
     }
 
     @Override
@@ -82,7 +82,7 @@ public class IdBeneficiarioPoliza implements Serializable {
                             otroIdBeneficiario.s_apellido) &&
                     Objects.equals(fecha_nacimiento,
                             otroIdBeneficiario.fecha_nacimiento) &&
-                    Objects.equals(idpoliza, otroIdBeneficiario.idpoliza);
+                    Objects.equals(clave_poliza, otroIdBeneficiario.clave_poliza);
         } else {
                 return false;
             }
@@ -90,11 +90,11 @@ public class IdBeneficiarioPoliza implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(nombre, p_apellido, s_apellido, fecha_nacimiento, idpoliza);
+        return Objects.hash(nombre, p_apellido, s_apellido, fecha_nacimiento, clave_poliza);
     }
 
     @Override
     public String toString() {
-        return String.format("idBeneficiarioPoliza: (%s, %s, %s, %s, %s)", nombre,p_apellido,s_apellido,fecha_nacimiento,idpoliza);
+        return String.format("idBeneficiarioPoliza: (%s, %s, %s, %s, %s)", nombre,p_apellido,s_apellido,fecha_nacimiento, clave_poliza);
     }
 }
