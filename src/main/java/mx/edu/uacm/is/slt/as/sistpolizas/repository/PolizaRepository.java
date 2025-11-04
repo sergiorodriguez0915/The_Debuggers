@@ -1,5 +1,8 @@
 package mx.edu.uacm.is.slt.as.sistpolizas.repository;
 
+<<<<<<< HEAD
+public class PolizaRepository {
+=======
 
 import mx.edu.uacm.is.slt.as.sistpolizas.model.Poliza;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,4 +19,5 @@ public interface PolizaRepository extends JpaRepository<Poliza, UUID> {
 
     List<Poliza> findPolizaByDescripcion(String descripcion);
 
+>>>>>>> developer
 }
