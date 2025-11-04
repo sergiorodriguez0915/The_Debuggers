@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-//Esta interfaz gestiona la entidad Beneficiario y su clave primaria es la clase compuesta IdBeneficiarioPoliza (que definiste como @Embeddable).
 package mx.edu.uacm.is.slt.as.sistpolizas.repository; // ¡PACKAGE FINAL CORRECTO!
 
 import mx.edu.uacm.is.slt.as.sistpolizas.model.Beneficiario; // Importación correcta
@@ -7,9 +5,9 @@ import mx.edu.uacm.is.slt.as.sistpolizas.model.IdBeneficiarioPoliza; // Importac
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 import java.util.Date;
-import org.springframework.stereotype.Repository;
+//import org.springframework.stereotype.Repository;
 
-@Repository
+//@Repository
 public interface BeneficiarioRepository extends JpaRepository<Beneficiario, IdBeneficiarioPoliza> {
 
     // Métodos adaptados a los atributos de la clave compuesta IdBeneficiarioPoliza
@@ -21,9 +19,3 @@ public interface BeneficiarioRepository extends JpaRepository<Beneficiario, IdBe
 
     Optional<Beneficiario> findByIdFecha_nacimiento(Date fechaNacimiento);
 }
-=======
-package mx.edu.uacm.is.slt.as.sistpolizas.repository;
-
-public class BeneficiarioRepository {
-}
->>>>>>> developer
