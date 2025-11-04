@@ -36,7 +36,8 @@ public class PolizaController {
 
     //end-points GET
 
-    @GetMapping("/polizas")
+    @GetMapping("/pol" +
+            "izas")
     public ResponseEntity<String> getPolizas() {
         return ResponseEntity.ok("Devuelve lista de Poliza");
     }
@@ -95,7 +96,7 @@ public class PolizaController {
 
     @PutMapping("/polizas/{clave}/{tipo}/{monto}/{descripcion}/{curpCliente}")
     public ResponseEntity<String> actualizaPolizaPorClave(@PathVariable String clave,
-                                                          @PathVariable Byte tipo, @PathVariable Float monto,
+                                                          @PathVariable String tipo, @PathVariable Float monto,
                                                           @PathVariable String descripcion, @PathVariable String curpCliente) {
         return ResponseEntity.ok("Actializacion de cliente con los atributos dados");
 
