@@ -1,7 +1,5 @@
 package mx.edu.uacm.is.slt.as.sistpolizas.controller;
 
-import mx.edu.uacm.is.slt.as.sistpolizas.model.Cliente;
-import mx.edu.uacm.is.slt.as.sistpolizas.repository.ClienteRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
