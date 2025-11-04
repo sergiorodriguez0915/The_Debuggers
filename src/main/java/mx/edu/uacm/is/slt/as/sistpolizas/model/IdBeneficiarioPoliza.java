@@ -9,13 +9,14 @@ import java.util.UUID;
 
 @Embeddable
 public class IdBeneficiarioPoliza implements Serializable {
+
     private String nombre;
     private String p_apellido;
     private String s_apellido;
     private Date fecha_nacimiento;
     private UUID clave_poliza;
 
-    private static final long serialVersionid = 52711849321L;
+    private static final long serialVersionUID = 52711849321L;
 
     public IdBeneficiarioPoliza(){
 

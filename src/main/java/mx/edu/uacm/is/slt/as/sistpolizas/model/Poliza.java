@@ -19,8 +19,8 @@ public class Poliza {
     public Poliza() {
     }
 
-    public Poliza(UUID polizaid, String tipo, String descripcion, double monto, String cliente_asegurado) {
-        this.clave = polizaid;
+    public Poliza(UUID clave, String tipo, String descripcion, double monto, String cliente_asegurado) {
+        this.clave = clave;
         this.tipo = tipo;
         this.descripcion = descripcion;
         this.monto = monto;
