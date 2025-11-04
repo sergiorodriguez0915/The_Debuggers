@@ -9,7 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BeneficiarioController {
 
+    /*
     //Repositorios
+    private final ClienteRepository clienteRepository;
+
+    public ClienteController(ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
+    }
+    */
 
     //Servicio REST GET
     @GetMapping(value = {"/beneficiario/{fecha_nacimiento}/{clave_poliza}/{nombres}/{primer_apellido}/{segundo_apellido}",
@@ -31,13 +38,13 @@ public class BeneficiarioController {
     public ResponseEntity<String> createBeneficiario(
             @PathVariable String fecha_nacimiento,
             @PathVariable String clave_poliza,
-            @PathVariable String porcentaje,
+            @PathVariable double porcentaje,
             @PathVariable String nombres,
             @PathVariable String primer_apellido,
             @PathVariable (required = false) String segundo_apellido){
         //Aqui va la implementacion
 
-        return ResponseEntity.ok("Beneficiario actualizado");
+        return ResponseEntity.ok("Beneficiario registrado");
     }
 
 
