@@ -42,8 +42,8 @@ public class ClienteController {
     }
 
     //Servicio REST PUT
-    @PutMapping(value={"/cliente/{curp}/{direccion}/{fecha_nacimiento}/{nombre}/{p_apellido}/{s_Apellido}",
-                       "{curp}/{direccion}/{fecha_nacimiento}/{nombre}/{p_apellido}"})
+    @PutMapping(value={"/cliente/{curp}/{direccion}/{fecha_nacimiento}/{nombre}/{p_apellido}/{s_apellido}",
+                       "/cliente/{curp}/{direccion}/{fecha_nacimiento}/{nombre}/{p_apellido}"})
     public ResponseEntity<String> updateCliente(
             @PathVariable String curp,
             @PathVariable String direccion,
