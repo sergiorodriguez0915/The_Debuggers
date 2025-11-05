@@ -15,7 +15,7 @@ public class Beneficiario {
     private String s_apellido;
     private Date fecha_nacimiento;
     */
-    private String poliza_beneficiario;
+    private IdBeneficiarioPoliza poliza_beneficiario;
     private double porcentaje;
 
     // Constructor vacío
@@ -25,7 +25,7 @@ public class Beneficiario {
     // Constructor con parámetros
 
 
-    public Beneficiario(String poliza_beneficiario, double porcentaje) {
+    public Beneficiario(IdBeneficiarioPoliza poliza_beneficiario, double porcentaje) {
         this.poliza_beneficiario = poliza_beneficiario;
         this.porcentaje = porcentaje;
     }
@@ -33,11 +33,11 @@ public class Beneficiario {
     // Getters y Setters
 
 
-    public String getPoliza_beneficiario() {
+    public IdBeneficiarioPoliza getPoliza_beneficiario() {
         return poliza_beneficiario;
     }
 
-    public void setPoliza_beneficiario(String poliza_beneficiario) {
+    public void setPoliza_beneficiario(IdBeneficiarioPoliza poliza_beneficiario) {
         this.poliza_beneficiario = poliza_beneficiario;
     }
 
