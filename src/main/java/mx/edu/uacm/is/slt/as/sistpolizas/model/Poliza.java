@@ -13,7 +13,7 @@ public class Poliza {
     private String tipo;
     private String descripcion;
     private double monto;
-    private String curp_cliente;
+    private String curpCliente;
 
 
     public Poliza() {
@@ -24,7 +24,7 @@ public class Poliza {
         this.tipo = tipo;
         this.descripcion = descripcion;
         this.monto = monto;
-        this.curp_cliente = cliente_asegurado;
+        this.curpCliente = cliente_asegurado;
     }
 
     public UUID getClave() {
@@ -59,12 +59,12 @@ public class Poliza {
         this.monto = monto;
     }
 
-    public String getCurp_cliente() {
-        return curp_cliente;
+    public String getCurpCliente() {
+        return curpCliente;
     }
 
-    public void setCurp_cliente(String curp_cliente) {
-        this.curp_cliente = curp_cliente;
+    public void setCurpCliente(String curpCliente) {
+        this.curpCliente = curpCliente;
     }
 
     @Override
@@ -86,6 +86,6 @@ public class Poliza {
 
     @Override
     public String toString() {
-        return String.format("Poliza(%s, %s, %s, %.2f, %s)", clave, tipo, descripcion, monto, curp_cliente);
+        return String.format("Poliza(%s, %s, %s, %.2f, %s)", clave, tipo, descripcion, monto, curpCliente);
     }
 }
