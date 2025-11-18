@@ -25,7 +25,7 @@ public class PolizaService {
         return Objects.equals(p1.getTipo(), p2.getTipo()) &&
                 Objects.equals(p1.getMonto(), p2.getMonto()) &&
                 Objects.equals(p1.getDescripcion(), p2.getDescripcion()) &&
-                Objects.equals(p1.getCurp_cliente(), p2.getCurp_cliente());
+                Objects.equals(p1.getCurpCliente(), p2.getCurpCliente());
     }
 
     // Verificar consistencia por ID (clave)

@@ -8,10 +8,9 @@ import java.util.Optional;
 //@Repository
 public interface ClienteRepository extends JpaRepository<Cliente, String> {
 
-    // Atributos del modelo Cliente
-    Optional<Cliente> findByNombreAndP_apellidoAndS_apellido(
-            String nombre, // Parámetro 'nombre'
-            String p_apellido, // Parámetro 'p_apellido'
-            String s_apellido // Parámetro 's_apellido'
+    Optional<Cliente> findByNombresAndPrimerApellidoAndSegundoApellido(
+            String nombres,
+            String primerApellido,
+            String segundoApellido
     );
 }
