@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface PolizaRepository extends JpaRepository<Poliza, UUID> {
 
-    Optional<Poliza> findByPolizaId(UUID polizaId);
+    Optional<Poliza> findByClave(UUID clave);
 
     List<Poliza> findPolizaByTipo(String tipo);
 
