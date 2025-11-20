@@ -7,5 +7,9 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 public interface ClienteRepository extends JpaRepository<Cliente, String>{
-    Optional<Cliente> findByCurp(String curp);
+    Optional<Cliente> findByNombresAndPrimerApellidoAndSegundoApellido(
+            String nombres,
+            String primerApellido,
+            String segundoApellido
+    );
 }
